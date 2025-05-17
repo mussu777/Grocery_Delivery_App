@@ -23,8 +23,11 @@ The **Grocery Delivery App** is a full-stack cross-platform mobile solution desi
    
 ## Screens and Workflow
 
-![First collection](https://drive.google.com/uc?export=view&id=1CzBfnT7tvGjhuWMxjfIv3oF3IqY7YfgT)
-![Second collection](https://drive.google.com/uc?export=view&id=1Deg8Xc_gFP41ADckSIdDnu80y0jpO6fe)
+![Image 1](https://drive.google.com/uc?export=view&id=16LZ-NOdvOq77lP4y4K2RgqmpPzjLG3wj)
+![Image 2](https://drive.google.com/uc?export=view&id=1IXAzEUvLbrvq5XqfG-11OANHZYtgysXG)
+![Image 3](https://drive.google.com/uc?export=view&id=1Phpzi7kXXiYkNHZnuxRGpy1tSF1TJIq_)
+![Image 4](https://drive.google.com/uc?export=view&id=1TXsCyrURKpu9Z1JsrGZ_hwlqpPL0Nbyl)
+
 
 1. **Login Screen**: 
    - Partners log in with a username and password assigned to them.
