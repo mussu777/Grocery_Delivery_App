@@ -30,80 +30,127 @@ The **Grocery Delivery App** is a full-stack cross-platform mobile solution desi
 
 
 1. **Login Screen**: 
-   - Partners log in with a username and password assigned to them.
+   - Users log in with a mobile number assigned to them.
+   - In top right delivery partners can login by clicking on riding moto button.
    
 2. **Home Screen**:
-   - Displays client details (branch name, code).
-   - Button to send all emails related to the branch.
-   - Option for credit booking, which navigates to the next screen after fetching the user’s current location.
+   - Automatically set location after giving the location permission.
+   - Contains profile icon where we can logout and see personal details.
+   - A smooth carousel experience and a wide selection of grocery items ready to be explored and purchased with a tap.
+   - A responsive HOC keeps users informed with real-time order statuses — Available or Delivered.
 
-3. **Credit Booking Screen**:
-   - Fields to input booking details.
-   - Auto-populates the destination list based on the pin code entered.
+3. **Add To Cart Screen**:
+   - Tapping a grocery category takes users to the Add to Cart page, where they can easily add or remove items.
+   - Adjust quantities effortlessly and proceed smoothly to the next step in the checkout journey.
 
-4. **Dimensions Screen**:
-   - Calculates and auto-fills length, width, and height based on item quantity.
+4. **Place Order Screen**:
+   - Its a order details page where we can increse or decrese the quantity and also contains the bill details.
+   - Below we can see our location and a button which contain total price and place order option.
    
-5. **Invoice Screen**:
-   - Allows users to enter all necessary invoice-related fields.
+5. **Order Complete Screen**:
+   - Shows the confirmation of order with a check tick and address of user.
 
-6. **PDF Management Screen**:
-   - Displays generated PDFs with options to view or download each PDF.
+6. **Map Screen**:
+   - Track your order in real-time with a dotted-line map view showing both user location and the branch.
+
+7. **Order Summary Screen**:
+   - Current order details are given with all fares and tax.
+
+8. **Profile Screen**:
+   - Profile details, past and current order with status can be seen.
+
+9. **Delivery Login Screen**:
+   - Delivery partner can login by their assigned email and password.
+
+10. **Order Available Screen**:
+    - It's a delivery partner home screen where newly placed available order can be seen.
+
+11. **Order Delivered Screen**:
+    - It's a delivery partner home screen where past delivered order can be seen.
+
+12. **Accept Order Screen**:
+    - Map containing real time location of delivery partner and an option of accept order.
+
+13. **Order Accepted Screen**:
+    - Shows the popup when the delvery partner accept order to deliver.
+
+14. **Order Picked Up Screen**:
+    - After accepting order picked up screen will be there where deilvery partner can pick up their order from the branch showing in map.
+
+15. **Complete Delivered Screen**:
+    - Reaching the destination of user through real time location delivery partner has deliverd option which make the order complete.
+
 
 ## Technology Stack
 
-### Client-side (Android)
+### Client-side (Cross-Platform - React Native)
 
-- **Language**: Kotlin with Jetpack Compose for a modern UI experience.
-- **Architecture**: MVVM (Model-View-ViewModel) for separation of concerns.
-- **Libraries**:
-  - **OkHttpClient**: For secure and efficient network calls.
-  - **FusedLocationProviderClient**: To get the current location of the user.
-  - **SharedPreferences**: For secure local storage of login credentials, keeping users logged in unless they log out.
-  - **Room Database**: To store and manage PDF data within the app, avoiding excessive use of external storage.
+- **Language**: JavaScript & TypeScript.
+- **Architecture**: Component-based with Zustand for state management and modular design for scalability.
+- **Libraries & Utilities**:
+  - **React Navigation**: For stack-based and tab-based screen navigation.
+  - **Zustand**: Lightweight state management for predictable app behavior.
+  - **Axios**: For handling HTTP requests to backend APIs..
+  - **JWT Decode**: To decode and validate JWT tokens for authentication.
   - **Component-based Architecture**: Enables reusable components throughout the app.
-  - **NavHost**: For seamless navigation between screens.
+  - **MMKV**: Fast, persistent key-value storage used for caching and auth state.
+  - **Lottie React Native**: To add engaging animations for user feedback.
+  - **Reanimated & Gesture Handler**: For creating fluid, interactive UI transitions.
+  - **React Native Maps**: For displaying real-time map data with branch and delivery locations.
+  - **Maps Directions**: Integrates with Google Maps for route paths.
+  - **Geolocation**: To fetch the user’s current GPS coordinates.
 
-### Server-side (Spring Boot)
+### Server-side (Node.js with Fastify & AdminJS)
 
-- **Language**: Java, using Spring Boot.
-- **Architecture**: MVC (Model-View-Controller) for better separation of concerns.
+- **Language**: JavaScript.
+- **Architecture**: Modular architecture with separation of concerns (controllers, middleware, models, routes).
+- **Runtime**: Node.js.
+- **Framework**: Fastify — lightweight and fast web framework.
+- **Admin Panel**: AdminJS — for admin dashboard and resource management.
+- **Database**: MongoDB — used via mongoose ODM.
+- **Authentication**: JWT (jsonwebtoken) and session management with @fastify/session and @fastify/cookie.
+- **Real-Time Communication**: fastify-socket.io — WebSocket support.
+
 - **APIs**:
-  - `POST /firmDetails` - Retrieves firm details.
-  - `POST /findBranchByBranchCode` - Retrieves branch information by branch code.
-  - `POST /findEmailByBranch` - Fetches email addresses related to a branch.
-  - `POST /findEmailByBranchCode` - Retrieves email addresses by branch code.
-  - `POST /getAddressDetails` - Gets address information.
-  - `POST /getConsignmentNumber` - Fetches consignment numbers.
-  - `POST /submitCreditBooking` - Submits credit booking details.
-  - `GET /getDestinationsByPinCode` - Retrieves destinations based on a pin code.
-  - `POST /sendEmails` - Sends emails related to a branch.
-  - `POST /login` - Authenticates the user.
+  - `POST /customer/login` - Logs in a customer.
+  - `POST /delivery/login` – Logs in a delivery partner.
+  - `POST /refresh-token` – Refreshes access token.
+  - `GET /user` – Retrieves authenticated user details.
+  - `PATCH /user` – Updates authenticated user details.
+  - `POST /order` – Creates a new order.
+  - `GET /order` – Retrieves all orders.
+  - `PATCH /order/:orderId/status` – Updates the status of a specific order.
+  - `POST /order/:orderId/confirm` – Confirms a specific order.
+  - `GET /order/:orderId` – Retrieves a specific order by ID.
+  - `GET /categories` – Retrieves all product categories.
+  - `GET /products/:categoryId` – Retrieves products by category ID.
 
 ### Usage
 
 1. Open the app and log in using provided credentials.
-2. Enter details for each courier, navigate between screens, and complete data entry as prompted.
-3. Generate a PDF for each courier with the option to view or download.
-4. Send emails related to the branch in bulk via the home screen.
+2. Provide Permission for location, click on products to purchase.
+3. Then add to cart page will appear, add items and place order.
+4. Delivery Partner will log in using provided credentials.
+5. In delivery partner home screen order will be available there under available section. 
+6. Accept the available order and deliver it to the user from the given branch.
 
 ## Project Structure
 
-### Client (Android)
+### Client (Cross-Platform - React Native)
+ 
+- **Assets**: Contains static files such as images, icons, and fonts used across the application.
+- **Components**: Houses reusable UI components like buttons, search bar, tab bar etc.
+- **Features**: Includes feature-specific logic, components, and state handling for individual application modules.
+- **Navigation**: Manages route definitions and navigation-related logic.
+- **Service**: Contains functions and modules responsible for API calls and backend interaction.
+- **State**: Manages global state using tools like Zustand.
+- **Styles**: Stores global and shared styles, including CSS/SCSS files and theme definitions.
+- **Utils**: Provides utility/helper functions used throughout the application.
 
-- **MainActivity**: Hosts the `NavHost` for screen navigation.
-- **ViewModels**: Manages all the UI-related logic and state.
-- **UI**: Contains all UI components and screens built using Jetpack Compose.
-- **Data**: 
-  - **Configs**: Holds configuration files for the app.
-  - **Room Database**: Manages local PDF data storage.
-  - **Repositories**: Handles data operations, including API calls using `OkHttpClient`.
-  - **Utils**: Includes utility classes, such as the PDF generator.
+### Server (Node.js with Fastify & AdminJS)
 
-### Server (Spring Boot)
-
-- **Controller Layer**: Handles incoming HTTP requests and routes them to the service layer.
-- **Service Layer**: Processes business logic and interacts with repositories.
-- **Repository Layer**: Manages database interactions.
-- **Model**: Contains database entity classes representing tables.
-- **DTO (Data Transfer Object)**: Defines data transfer objects used for communication between different layers of the application.
+- **Config Layer**: The config folder sets up database connection, session storage, admin panel configuration, and authentication logic.
+- **Controller Layer**: The controller folder handles business logic for authentication, order management, product retrieval, and user tracking.
+- **Middleware Layer**: The middleware layer handles request validation, verifying JWT access tokens for protected routes.
+- **Model Layer**: The model layer defines Mongoose schemas for core entities like branch, category, counter, order, product, and user, centralizing the application's data structure.
+- **Routes Layer**: The routes folder defines Fastify route handlers for different modules organizing the API endpoints.
