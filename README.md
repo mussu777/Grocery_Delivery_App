@@ -4,7 +4,8 @@ The **Grocery Delivery App** is a full-stack cross-platform mobile solution desi
 
 ## Key Features
 
-1. **Dual Role-Based Authentication**: Secure login system for both customers and delivery partners using unique credentials.
+1. **Dual Role-Based Authentication**: 
+   - Secure login system for both customers and delivery partners using unique credentials.
 2. **Real-Time Order Tracking with Socket.io**:
    - Enables continuous, bi-directional communication between customer and delivery partner.
    - Customers can track their grocery orders live, with status updates at every stage.
